@@ -26,7 +26,7 @@ libraries = []
 
 if sys.platform == "win32":
     define_macros.append(("WIN32", None))
-    libraries.append(("ws2_32", "Winmm"))
+    libraries.extend(["ws2_32", "Winmm"])
 
 if sys.platform != "darwin":
     define_macros.extend([("HAS_GETHOSTBYNAME_R", None), ("HAS_GETHOSTBYADDR_R", None)])
