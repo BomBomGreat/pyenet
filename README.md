@@ -1,7 +1,9 @@
 # pyenet
 
+### This is a personal fork made to work for one of my projects. I suggest you use the original repository instead.
+
 pyenet is a python wrapper for the ENet library by Lee Salzman,
- http://enet.bespin.org
+http://enet.bespin.org
 
 It was originally written by Scott Robinson <scott@tranzoa.com> and is
 currently maintained by Andrew Resch <andrewresch@gmail.com>

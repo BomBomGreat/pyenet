@@ -1,9 +1,7 @@
-from distutils.core import setup
-from distutils.extension import Extension
-from Cython.Distutils import build_ext
-
 import glob
 import sys
+
+from setuptools import Extension, setup
 
 source_files = ["enet.pyx"]
 
@@ -27,8 +25,8 @@ define_macros = [
 libraries = []
 
 if sys.platform == "win32":
-    define_macros.extend([("WIN32", None)])
-    libraries.extend(["ws2_32", "Winmm"])
+    define_macros.append(("WIN32", None))
+    libraries.append(("ws2_32", "Winmm"))
 
 if sys.platform != "darwin":
     define_macros.extend([("HAS_GETHOSTBYNAME_R", None), ("HAS_GETHOSTBYADDR_R", None)])
@@ -45,8 +43,6 @@ ext_modules = [
 ]
 
 setup(
-    name="enet",
-    cmdclass={"build_ext": build_ext},
     ext_modules=ext_modules,
     packages=["enet"],
     package_data={"enet": ["__init__.pyi"]},
