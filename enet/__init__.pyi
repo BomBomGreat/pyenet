@@ -1,4 +1,4 @@
-from typing import Any, Callable, Union
+from typing import Any, Callable, Union, Optional
 
 PACKET_FLAG_RELIABLE: int
 PACKET_FLAG_UNSEQUENCED: int
@@ -92,7 +92,7 @@ class Packet:
 
     """
 
-    def __init__(self, data: Union[bytes, None] = None, flags: int = 0) -> None: ...
+    def __init__(self, data: Optional[bytes] = None, flags: int = 0) -> None: ...
     def is_valid(self) -> bool: ...
     @property
     def sent(self) -> bool: ...
@@ -141,7 +141,7 @@ class Peer:
 
         returns 0 on success, < 0 on failure
         """
-    def receive(self, channelID: int) -> Union[Packet, None]:
+    def receive(self, channelID: int) -> Optional[Packet]:
         """
         receive (int channelID)
 
@@ -330,7 +330,7 @@ class Host:
 
     def __init__(
         self,
-        address: Union[Address, None] = None,
+        address: Optional[Address] = None,
         peerCount: int = 0,
         channelLimit: int = 0,
         incomingBandwidth: int = 0,
@@ -394,6 +394,6 @@ class Host:
     @property
     def totalReceivedPackets(self) -> int: ...
     @property
-    def intercept(self) -> Union[Callable, None]: ...
+    def intercept(self) -> Optional[Callable]: ...
     @property
     def checksum(self) -> int: ...
